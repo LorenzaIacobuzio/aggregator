@@ -48,3 +48,4 @@ For running tests, use
 ```bash
 $ npm run test
 ```
+Please refer to the Notes document for relevant comments about the project and thought process.
