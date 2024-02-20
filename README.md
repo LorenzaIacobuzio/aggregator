@@ -36,3 +36,9 @@ and run the app with
 ```bash
 $ npm run start
 ```
+
+For running tests, use
+
+```bash
+$ npm run test
+```
