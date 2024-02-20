@@ -37,6 +37,12 @@ and run the app with
 $ npm run start
 ```
 
+Once the app has been started, the existing endpoint can be hit with a valid userID at
+
+```bash
+$ http://localhost:3000/users/123456
+```
+
 For running tests, use
 
 ```bash
