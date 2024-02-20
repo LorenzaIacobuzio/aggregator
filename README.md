@@ -25,7 +25,7 @@
 
 ## Description
 
-Spirii challenge aggregator API. To run the app, git clone the repository, install the dependencies with
+Spirii challenge aggregator API. To run the app, git clone the repository, step into the root folder, install the dependencies with
 
 ```bash
 $ npm install
