@@ -3,11 +3,12 @@ import { AppService } from './app.service';
 import { server } from './mockApi'
 import { UserAggregator } from './userAggregator'
 
-@Controller()
+@Controller('/users')
 export class AppController {
   constructor(private readonly appService: AppService) {}
+  private userData;
 
-   @Get('users/:id')
+   @Get('/:id')
    getUser(@Param('id') id: String): Promise<UserAggregator> {
    server.listen();
           const data = fetch('https://transaction.api.com/transactions')
@@ -22,9 +23,14 @@ export class AppController {
        const userData = data.then((json) => {
             const filteredData = json.filter((user) => user.userId == id)
             const balance = filteredData.filter((user) => user.type === "payout").reduce((sum, user) => sum + Number(user.amount), 0)
+            const earned = filteredData.filter((user) => user.type === "earned").reduce((sum, user) => sum + Number(user.amount), 0)
             const spent = filteredData.filter((user) => user.type === "spent").reduce((sum, user) => sum + Number(user.amount), 0)
-            return new UserAggregator(id, balance, spent)
+            const payout = filteredData.filter((user) => user.type === "payout").reduce((sum, user) => sum + Number(user.amount), 0)
+            const paidout = filteredData.filter((user) => user.type === "paidout").reduce((sum, user) => sum + Number(user.amount), 0)
+            return new UserAggregator(id, balance, earned, spent, payout, paidout)
             });
+
+            this.userData = userData;
             return userData;
       }
 }

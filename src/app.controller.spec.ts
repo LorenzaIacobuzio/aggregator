@@ -19,9 +19,9 @@ beforeAll(() => server.listen())
 afterAll(() => server.close())
 
   describe('root', () => {
-      it('should return sum of payout amounts per user', async () => {
+      it('should return sum of balance field per user', async () => {
         const response = await appController.getUser("123456");
-        const balance = response[0];
+        const balance = response.balance;
         expect(balance).toBe(80);
       });
     });
